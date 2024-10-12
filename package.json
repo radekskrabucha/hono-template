@@ -4,8 +4,8 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "format": "prettier ./src --write",
-    "lint": "eslint",
-    "lint:fix": "eslint \"src/**/*.+(ts|js|tsx)\" --fix"
+    "lint": "eslint \"src/**/*.+(ts|js|tsx|jsx)\"",
+    "lint:fix": "eslint \"src/**/*.+(ts|js|tsx|jsx)\" --fix"
   },
   "dependencies": {
     "@hono/node-server": "1.13.2",
