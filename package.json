@@ -1,20 +1,15 @@
 {
-  "compilerOptions": {
-    "module": "es2022",
-    "moduleResolution": "Bundler",
-    "types": [
-      "@cloudflare/workers-types"
-    ],
-    "jsx": "react-jsx",
-    "jsxImportSource": "hono/jsx",
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ]
-    }
+  "name": "new-hono-template",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts"
   },
-  "extends": "@total-typescript/tsconfig/tsc/no-dom/app",
   "dependencies": {
-    "@total-typescript/tsconfig": "^1.0.4"
+    "@hono/node-server": "1.13.2",
+    "hono": "4.6.4"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.17",
+    "tsx": "4.7.1"
   }
 }
