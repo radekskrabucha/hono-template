@@ -3,6 +3,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
+    "test": "vitest",
     "format": "prettier ./src --write",
     "lint": "eslint \"src/**/*.+(ts|js|tsx|jsx)\"",
     "lint:fix": "eslint \"src/**/*.+(ts|js|tsx|jsx)\" --fix",
@@ -22,6 +23,7 @@
     "globals": "15.11.0",
     "prettier": "3.3.3",
     "tsx": "4.7.1",
-    "typescript-eslint": "8.8.1"
+    "typescript-eslint": "8.8.1",
+    "vitest": "2.1.2"
   }
 }
