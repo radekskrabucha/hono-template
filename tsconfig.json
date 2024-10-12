@@ -1,14 +1,13 @@
 {
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
+    "module": "es2022",
     "moduleResolution": "Bundler",
-    "strict": true,
-    "skipLibCheck": true,
-    "types": [
-      "node"
-    ],
+    "types": ["@cloudflare/workers-types"],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
-  }
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  },
+  "extends": "@total-typescript/tsconfig/tsc/no-dom/app"
 }
