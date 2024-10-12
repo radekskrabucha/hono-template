@@ -2,14 +2,17 @@
   "name": "new-hono-template",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "format": "prettier ./src --write"
   },
   "dependencies": {
     "@hono/node-server": "1.13.2",
     "hono": "4.6.4"
   },
   "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "4.3.0",
     "@types/node": "20.11.17",
+    "prettier": "3.3.3",
     "tsx": "4.7.1"
   }
 }
