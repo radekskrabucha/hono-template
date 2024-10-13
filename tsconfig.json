@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "module": "es2022",
     "moduleResolution": "Bundler",
     "types": ["node"],
     "jsx": "react-jsx",
