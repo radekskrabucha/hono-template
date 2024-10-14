@@ -5,6 +5,10 @@ import { z } from '@hono/zod-openapi'
 import { createRoute } from '@hono/zod-openapi'
 import { notFound } from '~/middleware/notFound'
 import { onError } from '~/middleware/onError'
+import { pinoLogger } from '~/middleware/pinoLogger'
+import { serveEmojiFavicon } from '~/middleware/serveEmojiFavicon'
+import type { AppBindings } from '~/types/app'
+import { env } from '~/utils/env'
 import { OK } from '~/utils/httpCodes'
 import { version, name } from '../package.json'
 
@@ -54,7 +58,7 @@ const route = createRoute({
   }
 })
 
-export const app = new OpenAPIHono()
+export const app = new OpenAPIHono<AppBindings>({ strict: false })
 
 app.openapi(route, c => {
   const { id } = c.req.valid('param')
@@ -67,6 +71,9 @@ app.openapi(route, c => {
     OK
   )
 })
+
+app.use(pinoLogger())
+app.use(serveEmojiFavicon('⭐️'))
 
 app.notFound(notFound)
 app.onError(onError)
@@ -81,11 +88,9 @@ app.doc('/doc', {
 })
 app.get('/swagger', swaggerUI({ url: '/doc' }))
 
-const port = 3000
-
 serve({
   fetch: app.fetch,
-  port
+  port: env.PORT
 })
 
-console.log(`Server is running on port http://localhost:${port}`)
+console.log(`Server is running on port ${env.PORT}`)

@@ -14,7 +14,11 @@
     "@hono/node-server": "1.13.2",
     "@hono/swagger-ui": "0.4.1",
     "@hono/zod-openapi": "0.16.4",
+    "dotenv": "16.4.5",
     "hono": "4.6.4",
+    "hono-pino": "0.3.0",
+    "pino": "9.4.0",
+    "pino-pretty": "11.2.2",
     "typescript": "5.6.3",
     "zod": "3.23.8"
   },
