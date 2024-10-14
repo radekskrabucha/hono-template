@@ -1,4 +1,5 @@
 import { serve } from '@hono/node-server'
+import { swaggerUI } from '@hono/swagger-ui'
 import { OpenAPIHono } from '@hono/zod-openapi'
 import { z } from '@hono/zod-openapi'
 import { createRoute } from '@hono/zod-openapi'
@@ -18,7 +19,7 @@ const ParamsSchema = z.object({
 
 const UserSchema = z
   .object({
-    id: z.coerce.number().openapi({
+    id: z.coerce.number().positive().openapi({
       example: 123
     }),
     name: z.string().openapi({
@@ -33,6 +34,7 @@ const UserSchema = z
 const route = createRoute({
   method: 'get',
   path: '/users/{id}',
+  tags: ['User'],
   request: {
     params: ParamsSchema
   },
@@ -58,7 +60,7 @@ app.openapi(route, c => {
       age: 20,
       name: 'Ultra-man'
     },
-    200 // You should specify the status code even if it is 200.
+    200
   )
 })
 
@@ -70,6 +72,8 @@ app.doc('/doc', {
     title: 'My API'
   }
 })
+
+app.get('/swagger', swaggerUI({ url: '/doc' }))
 
 const port = 3000
 console.log(`Server is running on port ${port}`)
