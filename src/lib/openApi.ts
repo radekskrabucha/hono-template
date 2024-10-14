@@ -11,5 +11,5 @@ export const configureOpenApi = (app: AppOpenApi) => {
       title: name
     }
   })
-  app.get('/swagger', swaggerUI({ url: '/doc' }))
+  app.get('/swagger', swaggerUI({ url: '/api/doc' }))
 }

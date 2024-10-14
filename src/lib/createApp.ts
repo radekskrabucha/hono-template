@@ -24,7 +24,7 @@ export const createRouter = () => {
 }
 
 export const createApp = () => {
-  const app = createRouter()
+  const app = createRouter().basePath('/api')
 
   app.use(pinoLogger())
   app.use(serveEmojiFavicon('⭐️'))
