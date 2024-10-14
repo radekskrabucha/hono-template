@@ -1,14 +1,9 @@
 import { serve } from '@hono/node-server'
-import { OpenAPIHono } from '@hono/zod-openapi'
 import { z } from '@hono/zod-openapi'
 import { createRoute } from '@hono/zod-openapi'
-import { notFound } from '~/middleware/notFound'
-import { onError } from '~/middleware/onError'
-import { pinoLogger } from '~/middleware/pinoLogger'
-import { serveEmojiFavicon } from '~/middleware/serveEmojiFavicon'
-import type { AppBindings } from '~/types/app'
 import { env } from '~/utils/env'
 import { OK } from '~/utils/httpCodes'
+import { createApp } from './lib/createApp'
 import { configureOpenApi } from './lib/openApi'
 
 const ParamsSchema = z.object({
@@ -57,7 +52,7 @@ const route = createRoute({
   }
 })
 
-export const app = new OpenAPIHono<AppBindings>({ strict: false })
+export const app = createApp()
 
 app.openapi(route, c => {
   const { id } = c.req.valid('param')
@@ -70,12 +65,6 @@ app.openapi(route, c => {
     OK
   )
 })
-
-app.use(pinoLogger())
-app.use(serveEmojiFavicon('⭐️'))
-
-app.notFound(notFound)
-app.onError(onError)
 
 configureOpenApi(app)
 
