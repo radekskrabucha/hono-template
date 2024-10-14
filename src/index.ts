@@ -3,6 +3,10 @@ import { swaggerUI } from '@hono/swagger-ui'
 import { OpenAPIHono } from '@hono/zod-openapi'
 import { z } from '@hono/zod-openapi'
 import { createRoute } from '@hono/zod-openapi'
+import { notFound } from '~/middleware/notFound'
+import { onError } from '~/middleware/onError'
+import { OK } from '~/utils/httpCodes'
+import { version, name } from '../package.json'
 
 const ParamsSchema = z.object({
   id: z.coerce
@@ -60,25 +64,28 @@ app.openapi(route, c => {
       age: 20,
       name: 'Ultra-man'
     },
-    200
+    OK
   )
 })
+
+app.notFound(notFound)
+app.onError(onError)
 
 // The OpenAPI documentation will be available at /doc
 app.doc('/doc', {
   openapi: '3.0.0',
   info: {
-    version: '1.0.0',
-    title: 'My API'
+    version,
+    title: name
   }
 })
-
 app.get('/swagger', swaggerUI({ url: '/doc' }))
 
 const port = 3000
-console.log(`Server is running on port ${port}`)
 
 serve({
   fetch: app.fetch,
   port
 })
+
+console.log(`Server is running on port http://localhost:${port}`)
