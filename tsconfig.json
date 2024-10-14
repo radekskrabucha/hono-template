@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "moduleResolution": "Bundler",
+    "module": "es2022",
     "types": ["node"],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
