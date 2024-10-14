@@ -1,7 +1,7 @@
 import { serve } from '@hono/node-server'
 import { createApp } from '~/lib/createApp'
 import { configureOpenApi } from '~/lib/openApi'
-import { userRouter } from '~/routes/user.index'
+import { userRouter } from '~/routes/user/user.index'
 import { env } from '~/utils/env'
 
 export const app = createApp()
