@@ -1,5 +1,4 @@
 import { serve } from '@hono/node-server'
-import { swaggerUI } from '@hono/swagger-ui'
 import { OpenAPIHono } from '@hono/zod-openapi'
 import { z } from '@hono/zod-openapi'
 import { createRoute } from '@hono/zod-openapi'
@@ -10,7 +9,7 @@ import { serveEmojiFavicon } from '~/middleware/serveEmojiFavicon'
 import type { AppBindings } from '~/types/app'
 import { env } from '~/utils/env'
 import { OK } from '~/utils/httpCodes'
-import { version, name } from '../package.json'
+import { configureOpenApi } from './lib/openApi'
 
 const ParamsSchema = z.object({
   id: z.coerce
@@ -78,15 +77,7 @@ app.use(serveEmojiFavicon('⭐️'))
 app.notFound(notFound)
 app.onError(onError)
 
-// The OpenAPI documentation will be available at /doc
-app.doc('/doc', {
-  openapi: '3.0.0',
-  info: {
-    version,
-    title: name
-  }
-})
-app.get('/swagger', swaggerUI({ url: '/doc' }))
+configureOpenApi(app)
 
 serve({
   fetch: app.fetch,
