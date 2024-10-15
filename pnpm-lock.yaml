@@ -26,6 +26,9 @@ importers:
       drizzle-orm:
         specifier: 0.34.1
         version: 0.34.1(@neondatabase/serverless@0.10.1)(@types/pg@8.11.6)
+      drizzle-zod:
+        specifier: 0.5.1
+        version: 0.5.1(drizzle-orm@0.34.1(@neondatabase/serverless@0.10.1)(@types/pg@8.11.6))(zod@3.23.8)
       hono:
         specifier: 4.6.4
         version: 4.6.4
@@ -1087,6 +1090,12 @@ packages:
         optional: true
       sqlite3:
         optional: true
+
+  drizzle-zod@0.5.1:
+    resolution: {integrity: sha512-C/8bvzUH/zSnVfwdSibOgFjLhtDtbKYmkbPbUCq46QZyZCH6kODIMSOgZ8R7rVjoI+tCj3k06MRJMDqsIeoS4A==}
+    peerDependencies:
+      drizzle-orm: '>=0.23.13'
+      zod: '*'
 
   end-of-stream@1.4.4:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
@@ -2510,6 +2519,11 @@ snapshots:
     optionalDependencies:
       '@neondatabase/serverless': 0.10.1
       '@types/pg': 8.11.6
+
+  drizzle-zod@0.5.1(drizzle-orm@0.34.1(@neondatabase/serverless@0.10.1)(@types/pg@8.11.6))(zod@3.23.8):
+    dependencies:
+      drizzle-orm: 0.34.1(@neondatabase/serverless@0.10.1)(@types/pg@8.11.6)
+      zod: 3.23.8
 
   end-of-stream@1.4.4:
     dependencies:

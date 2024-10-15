@@ -1,4 +1,5 @@
-import { createRoute } from '@hono/zod-openapi'
+import { createRoute, z } from '@hono/zod-openapi'
+import { selectTaskSchema } from '~/db/schema'
 import { OK } from '~/utils/httpCodes'
 
 const tags = ['Tasks']
@@ -11,7 +12,7 @@ export const tasksRoute = createRoute({
     [OK]: {
       content: {
         'application/json': {
-          schema: {}
+          schema: z.array(selectTaskSchema).openapi('Task')
         }
       },
       description: 'Retrieve the tasks'
