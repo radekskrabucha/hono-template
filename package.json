@@ -8,7 +8,10 @@
     "format": "prettier ./src --write",
     "lint": "eslint \"src/**/*.+(ts|js|tsx|jsx)\"",
     "lint:fix": "eslint \"src/**/*.+(ts|js|tsx|jsx)\" --fix",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "db:migrate": "drizzle-kit migrate",
+    "db:generate-migration": "drizzle-kit generate",
+    "db:setup": "drizzle-kit generate && drizzle-kit migrate"
   },
   "dependencies": {
     "@hono/node-server": "1.13.2",
