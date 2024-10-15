@@ -2,14 +2,12 @@ import { serve } from '@hono/node-server'
 import { createApp } from '~/lib/createApp'
 import { configureOpenApi } from '~/lib/openApi'
 import { tasksRouter } from '~/routes/tasks/tasks.index'
-import { userRouter } from '~/routes/user/user.index'
 import { env } from '~/utils/env'
 
 export const app = createApp()
 
 configureOpenApi(app)
 
-app.route('/users', userRouter)
 app.route('/tasks', tasksRouter)
 
 serve({

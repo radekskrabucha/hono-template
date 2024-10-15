@@ -6,8 +6,5 @@ import { getTasks } from './tasks.services'
 export const tasksHandler: AppRouteHandler<TasksRoute> = async c => {
   const tasks = await getTasks()
 
-  return c.json(
-    tasks,
-    OK
-  )
+  return c.json(tasks, OK)
 }
