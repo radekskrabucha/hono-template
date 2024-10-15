@@ -5,6 +5,7 @@ import { pinoLogger } from '~/middleware/pinoLogger'
 import { serveEmojiFavicon } from '~/middleware/serveEmojiFavicon'
 import type { AppBindings } from '~/types/app'
 import { UNPROCESSABLE_ENTITY } from '~/utils/httpCodes'
+import { formatZodError } from './zod'
 
 export const createRouter = () => {
   return new OpenAPIHono<AppBindings>({
@@ -13,7 +14,7 @@ export const createRouter = () => {
       if (!result.success) {
         return c.json(
           {
-            success: result.success,
+            message: formatZodError(result.error),
             error: result.error
           },
           UNPROCESSABLE_ENTITY

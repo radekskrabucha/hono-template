@@ -14,5 +14,10 @@ export const tasks = pgTable('tasks', {
 export type InsertTask = typeof tasks.$inferInsert
 export type SelectTask = typeof tasks.$inferSelect
 
-export const insertTaskSchema = createInsertSchema(tasks)
+export const insertTaskSchema = createInsertSchema(tasks).omit({
+  id: true,
+  createdAt: true,
+  updatedAt: true
+})
+export const patchTaskSchema = insertTaskSchema.partial()
 export const selectTaskSchema = createSelectSchema(tasks)
