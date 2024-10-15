@@ -1,7 +1,7 @@
 import { serve } from '@hono/node-server'
 import { createApp } from '~/lib/createApp'
 import { configureOpenApi } from '~/lib/openApi'
-import { tasksRouter } from '~/routes/tasks/tasks.index'
+import { tasksRouter } from '~/routes/tasks'
 import { env } from '~/utils/env'
 
 export const app = createApp()
