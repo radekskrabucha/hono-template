@@ -39,7 +39,8 @@ pnpm install
 cp .env.example .env
 ```
 
-4. **Set up the database**: 
+4. **Set up the database**:
+
    - Create a new project in your Neon DB account
    - Copy the connection string from your Neon DB project
    - Paste the connection string into the `DATABASE_URL` variable in your `.env` file
@@ -81,6 +82,7 @@ pnpm test
 To run the application using Docker, you can use the following pnpm scripts:
 
 1. Build the Docker image:
+
    ```
    pnpm run docker:build
    ```
@@ -99,11 +101,13 @@ pnpm run docker:compose
 For different environments, you can set the NODE_ENV variable:
 
 - Development:
+
   ```
   NODE_ENV=development pnpm run docker:compose
   ```
 
 - Testing:
+
   ```
   NODE_ENV=test pnpm run docker:compose
   ```
