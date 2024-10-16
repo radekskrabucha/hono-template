@@ -1,10 +1,12 @@
 version: '3.8'
+
 services:
-  app:
+  hono-api:
+    container_name: hono_api_container
     build:
       context: .
       args:
-        - NODE_ENV=${NODE_ENV:-development}
+        NODE_ENV: ${NODE_ENV:-development}
     ports:
       - "${PORT:-4000}:${PORT:-4000}"
     environment:
@@ -13,5 +15,6 @@ services:
       - LOG_LEVEL=${LOG_LEVEL:-info}
       - DATABASE_URL=${DATABASE_URL}
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./src:/usr/src/app/src
+      - ./package.json:/usr/src/app/package.json
+      - ./pnpm-lock.yaml:/usr/src/app/pnpm-lock.yaml
