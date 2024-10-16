@@ -75,3 +75,42 @@ pnpm test
 
 - Lint: `pnpm run lint`
 - Format: `pnpm run format`
+
+## Running with Docker
+
+To run the application using Docker, you can use the following pnpm scripts:
+
+1. Build the Docker image:
+   ```
+   pnpm run docker:build
+   ```
+
+2. Run the container:
+   ```
+   pnpm run docker:run
+   ```
+
+Alternatively, you can use Docker Compose:
+
+```
+pnpm run docker:compose
+```
+
+For different environments, you can set the NODE_ENV variable:
+
+- Development:
+  ```
+  NODE_ENV=development pnpm run docker:compose
+  ```
+
+- Testing:
+  ```
+  NODE_ENV=test pnpm run docker:compose
+  ```
+
+- Production:
+  ```
+  NODE_ENV=production pnpm run docker:compose
+  ```
+
+Make sure to set the `DATABASE_URL` environment variable to your actual database URL.

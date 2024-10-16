@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: .
+      args:
+        - NODE_ENV=${NODE_ENV:-development}
+    ports:
+      - "${PORT:-4000}:${PORT:-4000}"
+    environment:
+      - NODE_ENV=${NODE_ENV:-development}
+      - PORT=${PORT:-4000}
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - DATABASE_URL=${DATABASE_URL}
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules

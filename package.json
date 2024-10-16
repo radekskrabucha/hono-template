@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "tsx watch src/index.ts",
     "start": "tsx src/index.ts",
+    "build": "tsc",
     "test": "NODE_ENV=test vitest",
     "format": "prettier ./src --write",
     "lint": "eslint \"src/**/*.+(ts|js|tsx|jsx)\"",
@@ -12,7 +13,10 @@
     "type-check": "tsc --noEmit",
     "db:migrate": "drizzle-kit migrate",
     "db:generate-migration": "drizzle-kit generate",
-    "db:setup": "drizzle-kit generate && drizzle-kit migrate"
+    "db:setup": "drizzle-kit generate && drizzle-kit migrate",
+    "docker:build": "docker build -t hono-openapi-app .",
+    "docker:run": "docker run -p ${PORT:-4000}:${PORT:-4000} -e DATABASE_URL=$DATABASE_URL -e NODE_ENV=${NODE_ENV:-production} -e LOG_LEVEL=${LOG_LEVEL:-info} -e PORT=${PORT:-4000} hono-openapi-app",
+    "docker:compose": "docker-compose up --build"
   },
   "dependencies": {
     "@hono/node-server": "1.13.2",
