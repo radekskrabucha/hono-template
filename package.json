@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "test": "vitest",
+    "test": "NODE_ENV=test vitest",
     "format": "prettier ./src --write",
     "lint": "eslint \"src/**/*.+(ts|js|tsx|jsx)\"",
     "lint:fix": "eslint \"src/**/*.+(ts|js|tsx|jsx)\" --fix",
