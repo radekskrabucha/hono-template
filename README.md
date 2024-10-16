@@ -79,24 +79,15 @@ pnpm test
 
 ## Running with Docker
 
-To run the application using Docker, you can use the following pnpm scripts:
+### Run with Docker Compose
 
-1. Build the Docker image:
+To run the application using Docker Compose, use the following command:
 
-   ```
-   pnpm run docker:build
-   ```
-
-2. Run the container:
-   ```
-   pnpm run docker:run
-   ```
-
-Alternatively, you can use Docker Compose:
-
-```
+```bash
 pnpm run docker:compose
 ```
+
+This command uses the `docker-compose.yml` file in the project root to set up and run the application.
 
 For different environments, you can set the NODE_ENV variable:
 
@@ -117,4 +108,37 @@ For different environments, you can set the NODE_ENV variable:
   NODE_ENV=production pnpm run docker:compose
   ```
 
-Make sure to set the `DATABASE_URL` environment variable to your actual database URL.
+Make sure to set the `DATABASE_URL` environment variable in your `.env` file to your actual database URL.
+
+### Alternative: Manual Docker Commands
+
+If you prefer to run Docker commands manually, you can use the following instructions:
+
+1. Build the Docker image:
+
+   ```
+   docker build -t hono-openapi-app .
+   ```
+
+2. Run the container:
+
+   ```bash
+   docker run -p 4000:4000 \
+     -e DATABASE_URL=postgres://username:password@host:5432/database \
+     -e NODE_ENV=development \
+     -e LOG_LEVEL=debug \
+     -e PORT=4000 \
+     hono-openapi-app
+   ```
+
+   This command does the following:
+
+   - Maps the container's port 4000 to the host's port 4000
+   - Sets environment variables:
+     - `DATABASE_URL`: Replace with your actual Neon database URL
+     - `NODE_ENV`: Set to 'development' (can be changed to 'production' or 'test' as needed)
+     - `LOG_LEVEL`: Set to 'debug' (can be adjusted to 'trace', 'info', 'warn', 'error', 'fatal', or 'silent' as needed)
+     - `PORT`: Set to 4000 (can be changed if you want to use a different port)
+   - Uses the `hono-openapi-app` image we built earlier
+
+Note: Make sure you have Docker and Docker Compose installed on your system before running these commands.
