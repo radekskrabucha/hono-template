@@ -14,7 +14,9 @@ export const tasks = pgTable('tasks', {
 export type InsertTask = typeof tasks.$inferInsert
 export type SelectTask = typeof tasks.$inferSelect
 
-export const insertTaskSchema = createInsertSchema(tasks).omit({
+export const insertTaskSchema = createInsertSchema(tasks, {
+  name: schema => schema.name.min(1).max(256)
+}).omit({
   id: true,
   createdAt: true,
   updatedAt: true
