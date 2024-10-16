@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "moduleResolution": "Bundler",
-    "module": "es2022",
+    "module": "ESNext",
     "types": ["node"],
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
@@ -13,5 +13,8 @@
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules"],
-  "extends": "@total-typescript/tsconfig/tsc/no-dom/app"
+  "extends": "@total-typescript/tsconfig/tsc/no-dom/app",
+  "tsc-alias": {
+    "resolveFullPaths": true
+  }
 }
