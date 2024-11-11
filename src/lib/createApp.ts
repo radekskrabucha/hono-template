@@ -7,8 +7,8 @@ import type { AppBindings } from '~/types/app'
 import { UNPROCESSABLE_ENTITY } from '~/utils/httpCodes'
 import { formatZodError } from './zod'
 
-export const createRouter = () => {
-  return new OpenAPIHono<AppBindings>({
+export const createRouter = <T extends AppBindings = AppBindings>() => {
+  return new OpenAPIHono<T>({
     strict: false,
     defaultHook: (result, c) => {
       if (!result.success) {
