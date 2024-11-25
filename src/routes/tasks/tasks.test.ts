@@ -15,7 +15,7 @@ if (env.NODE_ENV !== 'test') {
 const client = testClient(createApp().route('/tasks', tasksRouter))
 
 describe('Tasks Router', () => {
-  let createdTaskId: string
+  let createdTaskId: number
   const taskName = 'Test Task'
   const updatedTaskName = 'Updated Test Task'
 
@@ -79,7 +79,7 @@ describe('Tasks Router', () => {
     expect(body.id).toBeDefined()
     expect(body.done).toBe(false)
 
-    createdTaskId = body.id.toString()
+    createdTaskId = body.id
   })
 
   it('4. GET /tasks/:id should return the created task', async () => {
@@ -95,13 +95,13 @@ describe('Tasks Router', () => {
       throw new Error(`Unexpected error: ${body.message}`)
     }
 
-    expect(body.id.toString()).toBe(createdTaskId)
+    expect(body.id).toBe(createdTaskId)
     expect(body.name).toBe(taskName)
   })
 
   it('5. GET /tasks/:id should return 404 for non-existent task', async () => {
     const response = await client.api.tasks[':id'].$get({
-      param: { id: '999' }
+      param: { id: 999 }
     })
     expect(response.status).toBe(404)
   })
@@ -122,14 +122,14 @@ describe('Tasks Router', () => {
       throw new Error(`Unexpected error: ${body.message}`)
     }
 
-    expect(body.id.toString()).toBe(createdTaskId)
+    expect(body.id).toBe(createdTaskId)
     expect(body.name).toBe(updateData.name)
     expect(body.done).toBe(updateData.done)
   })
 
   it('7. PATCH /tasks/:id should return 404 for non-existent task', async () => {
     const response = await client.api.tasks[':id'].$patch({
-      param: { id: '999' },
+      param: { id: 999 },
       json: { name: 'Non-existent Task' }
     })
 
@@ -159,7 +159,7 @@ describe('Tasks Router', () => {
       throw new Error(`Unexpected error: ${body.message}`)
     }
 
-    expect(body.id.toString()).toBe(createdTaskId)
+    expect(body.id).toBe(createdTaskId)
 
     const getResponse = await client.api.tasks[':id'].$get({
       param: { id: createdTaskId }
@@ -169,7 +169,7 @@ describe('Tasks Router', () => {
 
   it('10. DELETE /tasks/:id should return 404 for non-existent task', async () => {
     const response = await client.api.tasks[':id'].$delete({
-      param: { id: '999' }
+      param: { id: 999 }
     })
     expect(response.status).toBe(404)
   })
