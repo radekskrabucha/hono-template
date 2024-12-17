@@ -15,7 +15,7 @@ export type InsertTask = typeof tasks.$inferInsert
 export type SelectTask = typeof tasks.$inferSelect
 
 export const insertTaskSchema = createInsertSchema(tasks, {
-  name: schema => schema.name.min(1).max(256)
+  name: schema => schema.min(1).max(256)
 }).omit({
   id: true,
   createdAt: true,
