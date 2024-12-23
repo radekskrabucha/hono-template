@@ -34,10 +34,10 @@ importers:
         version: 4.6.14
       hono-pino:
         specifier: 0.7.0
-        version: 0.7.0(hono@4.6.14)(pino@9.5.0)
+        version: 0.7.0(hono@4.6.14)(pino@9.6.0)
       pino:
-        specifier: 9.5.0
-        version: 9.5.0
+        specifier: 9.6.0
+        version: 9.6.0
       pino-pretty:
         specifier: 13.0.0
         version: 13.0.0
@@ -67,8 +67,8 @@ importers:
         specifier: 9.1.0
         version: 9.1.0(eslint@9.17.0)
       globals:
-        specifier: 15.13.0
-        version: 15.13.0
+        specifier: 15.14.0
+        version: 15.14.0
       prettier:
         specifier: 3.4.2
         version: 3.4.2
@@ -1386,8 +1386,8 @@ packages:
     resolution: {integrity: sha512-oahGvuMGQlPw/ivIYBjVSrWAfWLBeku5tpPE2fOPLi+WHffIWbuh2tCjhyQhTBPMf5E9jDEH4FOmTYgYwbKwtQ==}
     engines: {node: '>=18'}
 
-  globals@15.13.0:
-    resolution: {integrity: sha512-49TewVEz0UxZjr1WYYsWpPrhyC/B/pA8Bq0fUmet2n+eR7yn0IvNzNaoBwnK6mdkzcN+se7Ez9zUgULTz2QH4g==}
+  globals@15.14.0:
+    resolution: {integrity: sha512-OkToC372DtlQeje9/zHIo5CT8lRP/FUgEOKBEhU4e0abL7J7CD24fD9ohiLN5hagG/kWCYj4K5oaxxtj2Z0Dig==}
     engines: {node: '>=18'}
 
   globby@11.1.0:
@@ -1617,8 +1617,8 @@ packages:
   pino-std-serializers@7.0.0:
     resolution: {integrity: sha512-e906FRY0+tV27iq4juKzSYPbUj2do2X2JX4EzSca1631EB2QJQUqGbDuERal7LCtOpxl6x3+nvo9NPZcmjkiFA==}
 
-  pino@9.5.0:
-    resolution: {integrity: sha512-xSEmD4pLnV54t0NOUN16yCl7RIB1c5UUOse5HSyEXtBp+FgFQyPeDutc+Q2ZO7/22vImV7VfEjH/1zV2QuqvYw==}
+  pino@9.6.0:
+    resolution: {integrity: sha512-i85pKRCt4qMjZ1+L7sy2Ag4t1atFcdbEt76+7iRJn1g2BvsnRMGu9p8pivl9fs63M2kF/A0OacFZhTub+m/qMg==}
     hasBin: true
 
   plimit-lit@1.6.1:
@@ -2958,7 +2958,7 @@ snapshots:
 
   globals@14.0.0: {}
 
-  globals@15.13.0: {}
+  globals@15.14.0: {}
 
   globby@11.1.0:
     dependencies:
@@ -2975,11 +2975,11 @@ snapshots:
 
   help-me@5.0.0: {}
 
-  hono-pino@0.7.0(hono@4.6.14)(pino@9.5.0):
+  hono-pino@0.7.0(hono@4.6.14)(pino@9.6.0):
     dependencies:
       defu: 6.1.4
       hono: 4.6.14
-      pino: 9.5.0
+      pino: 9.6.0
 
   hono@4.6.14: {}
 
@@ -3162,7 +3162,7 @@ snapshots:
 
   pino-std-serializers@7.0.0: {}
 
-  pino@9.5.0:
+  pino@9.6.0:
     dependencies:
       atomic-sleep: 1.0.0
       fast-redact: 3.5.0
