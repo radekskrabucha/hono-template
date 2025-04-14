@@ -38,7 +38,7 @@
     "@types/node": "22.13.17",
     "drizzle-kit": "0.30.6",
     "eslint": "9.23.0",
-    "eslint-config-prettier": "10.1.1",
+    "eslint-config-prettier": "10.1.2",
     "globals": "16.0.0",
     "prettier": "3.5.3",
     "tsc-alias": "1.8.13",
